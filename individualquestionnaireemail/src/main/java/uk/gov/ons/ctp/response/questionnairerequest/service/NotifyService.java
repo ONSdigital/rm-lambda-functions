@@ -5,10 +5,8 @@ import java.util.HashMap;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 
 import uk.gov.ons.ctp.response.questionnairerequest.model.QuestionnaireRequest;
-import uk.gov.service.notify.Notification;
 import uk.gov.service.notify.NotificationClient;
 import uk.gov.service.notify.NotificationClientException;
-import uk.gov.service.notify.NotificationResponse;
 
 /**
  * The service implementation for NotifyService
@@ -17,7 +15,6 @@ public class NotifyService {
   private static final String NOTIFY_API_ENV_KEY = "NOTIFY_API_KEY";
   private static final String EMAIL_RECIPIENT_ADDRESS_ENV_KEY = "EMAIL_RECIPIENT_ADDRESS";
   private static final String EMAIL_TEMPLATE_ID_ENV_KEY = "EMAIL_TEMPLATE_ID";
-  private static final String BAD_REQUEST = "Status code: 400";
 
   public static final String EXCEPTION_NOTIFY_SERVICE = "An error occurred contacting GOV.UK Notify: ";
   public static final String NOTIFY_SMS_NOT_SENT = "Notify Sms Not Sent";
