@@ -1,0 +1,53 @@
+info:
+  contactEmail: philippe.brossier@ons.gov.uk
+  version: ${project.version}
+  commit: ${buildNumber}
+  branch: ${scmBranch}
+  buildTime: ${timestamp}
+
+spring:
+  application:
+    name: Notify Gateway API
+
+  sleuth:
+    sampler:
+      percentage: 1
+
+  zipkin:
+    enabled: true # true is the default to post to a Zipkin server at 9411
+
+# logging config here as a reminder as to how to override logback from cmd line
+# ie -Dlogging.level.org.springframework=DEBUG
+logging:
+  level:
+    uk.gov.ons.ctp: debug
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: notifygw
+    password: ctp
+
+management:
+  port: 8281
+  context-path: /mgmt
+
+endpoints:
+  enabled: true
+  sensitive: true
+
+redelivery-policy:
+  maxRedeliveries: 10
+  initialRedeliveryDelay: 1000
+  redeliveryDelay: 1000
+
+notify:
+  apiKey: ctpnotifygateway-0e515090-7962-40e8-a8c7-acbacf079c21-ac979394-a989-4f79-b0e0-6abcca564393
+  templateId: 966731dc-ef2e-41ad-a828-8cdd95c81ebc
+
+rabbitmq:
+  username: guest
+  password: guest
+  host: localhost
+  virtualhost: /
